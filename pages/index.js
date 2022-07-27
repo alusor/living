@@ -5,7 +5,6 @@ import { Text } from '@geist-ui/core'
 
 import clientPromise from '../lib/db'
 
-
 export default function Home({ isConnected }) {
   return (
     <div className={styles.container}>
