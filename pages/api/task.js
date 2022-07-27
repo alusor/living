@@ -1,3 +1,7 @@
-export default function handler (req, res ) {
-  res.status(200).json({ task: "New task" })
-}
+import nc from 'next-connect'
+
+const taskHandler = nc().get((req, res) => {
+  res.json({ response: 'using next connect' })
+})
+
+export default taskHandler
