@@ -3,7 +3,10 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Text } from '@geist-ui/core'
 
-export default function Home() {
+import clientPromise from '../lib/db'
+
+
+export default function Home({ isConnected }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,8 +16,27 @@ export default function Home() {
       </Head>
 
       <main>
-        <Text p>Hola</Text>
+        <Text h1>{ isConnected.toString() }</Text>
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  try {
+    await clientPromise
+
+    return {
+      props: {
+        isConnected: true
+      }
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      props: {
+        isConnected: false
+      }
+    }
+  }
 }
