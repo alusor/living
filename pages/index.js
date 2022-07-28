@@ -16,7 +16,7 @@ export default function Home({ tasks = [] }) {
       </Head>
 
       <main>
-        <Text h1>Hola mundo</Text>
+        <Text h1>{tasks.map(({name}) => (<p key={name}>{name}</p>))}</Text>
       </main>
     </div>
   )
