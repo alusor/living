@@ -2,10 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Text } from '@geist-ui/core'
+import dbConnect from '../lib/db'
+import Task from '../models/Task'
 
-import clientPromise from '../lib/db'
-
-export default function Home({ isConnected }) {
+export default function Home({ tasks = [] }) {
+  console.log(tasks)
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +16,7 @@ export default function Home({ isConnected }) {
       </Head>
 
       <main>
-        <Text h1>{ isConnected.toString() }</Text>
+        <Text h1>Hola mundo</Text>
       </main>
     </div>
   )
@@ -23,11 +24,14 @@ export default function Home({ isConnected }) {
 
 export async function getServerSideProps(context) {
   try {
-    await clientPromise
+    await dbConnect()
+
+    /* find all the data in our database */
+    const result = await Task.find({}).lean()
 
     return {
       props: {
-        isConnected: true
+        tasks: JSON.parse(JSON.stringify(result))
       }
     }
   } catch (e) {
