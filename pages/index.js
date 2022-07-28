@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Text } from '@geist-ui/core'
 import dbConnect from '../lib/db'
-import Task from '../models/Task'
+import Task from '../models/task'
 
 export default function Home({ tasks = [] }) {
   console.log(tasks)
