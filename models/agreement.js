@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const AgreementSchema = new mongoose.Schema({
   title: String,
   responsible: mongoose.Types.ObjectId,
-  importance: Decimal,
+  importance: Number,
   period: String,
 },{
   timestamps: true
