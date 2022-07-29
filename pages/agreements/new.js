@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
 import { Text, Input, FormControl, Slider, Select, Button } from '@geist-ui/core'
 import dbConnect from '../../lib/db'
 import Agreement from '../../models/agreement'
@@ -22,7 +20,7 @@ const PageContainer = styled.main`
 
 export default function NewAgreement({ agreements = [] }) {
   return (
-    <div className={styles.container}>
+    <div >
       <Head>
         <title>Even Living - Less charge for the one in charge</title>
         <meta name="description" content="Even Living - Less charge for the one in charge" />

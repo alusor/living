@@ -55,6 +55,7 @@ const FooterAction = styled.div`
     border-radius: 50%;
     display: flex;
   }
+  padding-bottom: 64px;
 `
 
 const ChoreCard = ({title = ''}) => (
