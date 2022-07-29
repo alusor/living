@@ -4,7 +4,7 @@ import dbConnect from '../../lib/db'
 import Agreement from '../../models/agreement'
 import Header from '../../src/components/header'
 import styled from 'styled-components'
-
+import Image from 'next/image'
 
 const PageContainer = styled.main`
   padding: 1rem 3rem;
@@ -35,8 +35,12 @@ export default function NewAgreement({ agreements = [] }) {
         <Text b p>{`Who's responsible?`}</Text>
         <Input placeholder='Eduardo' width="100%"></Input>
         <Text b p>Importance</Text>
-        <Text>{`This is where the conversation happens! take into account things that are important to you: effort, pet peeves, it is your life, we are just helping you visualizing it :)`}</Text>
-        <Text>Remember: Be cordial</Text>
+        <Text p>How important is it to you, <b>guys</b>, that this task gets done? Have a conversation! you both decide this one <b>together.</b></Text>
+        <Image src="/Discuss.svg" width="512" height="246" alt=""></Image>
+        <Slider initialValue={25}></Slider>
+        <Text b p>Effort</Text>
+        <Text p>{'This one is for {responsible}, now, how much effort does this chore requires for you?'}</Text>
+        <Image src="/thinkdiscuss.svg" width="512" height="246" alt=""></Image>
         <Slider initialValue={25}></Slider>
         <Text b p>Check every...</Text>
         <Select className='recurrence' placeholder='day' width="90%">
