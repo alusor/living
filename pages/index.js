@@ -20,6 +20,11 @@ const HomeContainer = styled.main`
     padding: 0rem 2rem;
     overflow: auto;
   }
+
+  & .agreement-list {
+    display: grid;
+    grid-gap: 1rem;
+  }
 `
 
 const FooterAction = styled.div`
@@ -58,18 +63,20 @@ export default function Home () {
   <HomeContainer>
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
-      <ChoreCard
-        name='Clo'
-        picture='/f.svg'
-        agreement='Take out the trash'
-        recurrence='1 times a week'
-      />
-      <ChoreCard
-        name='Eduardo'
-        picture='/m.svg'
-        agreement='Take out the trash'
-        recurrence='1 times a week'
-      />
+      <div className='agreement-list'>
+        <ChoreCard
+          name='Clo'
+          picture='/f.svg'
+          agreement='Take out the trash'
+          recurrence='1 times a week'
+        />
+        <ChoreCard
+          name='Eduardo'
+          picture='/m.svg'
+          agreement='Take out the trash'
+          recurrence='1 times a week'
+        />
+      </div>
       <p className='empty-state'>This is your agreement list: Click on the button <b>Add</b> below to add a new agreement.</p>  
     </section>
     <footer>
