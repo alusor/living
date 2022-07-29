@@ -52,8 +52,10 @@ const FooterAction = styled.div`
     border: none;
     width: 82px;
     height: 82px;
-    border-radius: 50%;
+    border-radius: 41px;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
   padding-bottom: 64px;
 `
