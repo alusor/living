@@ -3,17 +3,21 @@ import styles from '../styles/Home.module.css'
 import styled from 'styled-components'
 import Header from '../src/components/header'
 import Link from 'next/link'
+import Image from 'next/image'
+
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: 100%;
+
   & > .empty-state {
     color: #5D6768;
   }
   & > .page-content {
-    padding: 0rem 2rem
+    padding: 0rem 2rem;
+    overflow: auto;
   }
 `
 
@@ -47,7 +51,14 @@ const FooterAction = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 1.5rem 1.5rem 0rem 0rem;
-  & > .plus {
+  padding: 1rem;
+  & .plus-link {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+  }
+  & .plus {
     background-color: #FFEF14;
     border: none;
     width: 82px;
@@ -78,9 +89,13 @@ export default function Home () {
     <footer>
       <FooterAction>
        <Link href='/agreements/new'>
-        <button className="plus">+</button>
-       </Link>
+        <a className='plus-link'>
+        <div className="plus">
+          <Image src='/plus.svg' width='41' height='41'/>
+        </div>
         New agreement
+        </a>
+       </Link>
       </FooterAction>
     </footer>
   </HomeContainer>
