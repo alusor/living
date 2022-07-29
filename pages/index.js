@@ -37,7 +37,7 @@ export default function Home({ agreements = [] }) {
 
         <Text b p>Name of the agreement</Text>
         <Input placeholder='Doing the dishes' width="100%"></Input>
-        <Text b p>Who's responsible?</Text>
+        <Text b p>{`Who's responsible?`}</Text>
         <Input placeholder='Eduardo' width="100%"></Input>
         <Text b p>Importance</Text>
         <Text>{`This is where the conversation happens! take into account things that are important to you: effort, pet peeves, it is your life, we are just helping you visualizing it :)`}</Text>
