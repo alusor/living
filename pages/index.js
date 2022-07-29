@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Header from '../src/components/header'
 import Link from 'next/link'
 import Image from 'next/image'
+import ChoreCard from '../src/components/chore-card';
 
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
@@ -18,27 +19,6 @@ const HomeContainer = styled.main`
   & > .page-content {
     padding: 0rem 2rem;
     overflow: auto;
-  }
-`
-
-const ChoreCardContainer = styled.div`
-  border: solid 5px #D5D5D5;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  & > .add-button {
-    width: 64px;
-    height: 64px;
-    background-color: #F7F7F7;
-    border: solid #B7B7B7 1px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #C6C6C6;
-    font-size: 2rem;
   }
 `
 
@@ -71,19 +51,25 @@ const FooterAction = styled.div`
   padding-bottom: 64px;
 `
 
-const ChoreCard = ({title = ''}) => (
-  <ChoreCardContainer>
-    <div>New chore or task</div>
-    <div className='add-button' >+</div>
-  </ChoreCardContainer>
-)
+
 
 export default function Home () {
  return (
   <HomeContainer>
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
-      <ChoreCard></ChoreCard>
+      <ChoreCard
+        name='Clo'
+        picture='/f.svg'
+        agreement='Take out the trash'
+        recurrence='1 times a week'
+      />
+      <ChoreCard
+        name='Eduardo'
+        picture='/m.svg'
+        agreement='Take out the trash'
+        recurrence='1 times a week'
+      />
       <p className='empty-state'>This is your agreement list: Click on the button <b>Add</b> below to add a new agreement.</p>  
     </section>
     <footer>
