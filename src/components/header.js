@@ -9,6 +9,9 @@ const Header = styled.section`
   width: 100%;
   box-sizing: border-box;
   text-align: center;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 `
 
 export default Header;
