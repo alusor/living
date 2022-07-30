@@ -4,8 +4,11 @@ import styled from 'styled-components'
 import Header from '../src/components/header'
 import Link from 'next/link'
 import Image from 'next/image'
-import ChoreCard from '../src/components/chore-card';
+import ChoreCard from '../src/components/chore-card'
 import Router from 'next/router'
+import Agreement from '../models/agreement'
+import dbConnect from '../lib/db'
+
 
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
@@ -61,24 +64,28 @@ const FooterAction = styled.div`
 
 
 
-export default function Home () {
+export default function Home ({ agreements = [] }) {
+  console.log(agreements)
+  const renderAgreements = () => {
+    return agreements.map((agreement, index) => {
+      return (
+        <ChoreCard
+          key={agreement.responsible + index}
+          name={agreement.responsible}
+          picture={agreement.responsible === 'Clo' ? '/f.svg' : '/m.svg'}
+          agreement={agreement.title}
+          recurrence={`Importance ${agreement.importance} and ${agreement.effort} effort.`}
+        />
+      )
+    })
+  }
  return (
   <HomeContainer>
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
       <div className='agreement-list'>
-        <ChoreCard
-          name='Clo'
-          picture='/f.svg'
-          agreement='Take out the trash'
-          recurrence='1 times a week'
-        />
-        <ChoreCard
-          name='Eduardo'
-          picture='/m.svg'
-          agreement='Take out the trash'
-          recurrence='1 times a week'
-        />
+        
+        {renderAgreements()}
       </div>
       <p className='empty-state'>This is your agreement list: Click on the button <b>Add</b> below to add a new agreement.</p>  
     </section>
@@ -96,4 +103,26 @@ export default function Home () {
     </footer>
   </HomeContainer>
  )
+}
+
+export async function getServerSideProps(context) {
+  try {
+    await dbConnect()
+
+    /* find all the data in our database */
+    const result = await Agreement.find({}).lean()
+
+    return {
+      props: {
+        agreements: JSON.parse(JSON.stringify(result))
+      }
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      props: {
+        isConnected: false
+      }
+    }
+  }
 }

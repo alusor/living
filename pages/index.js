@@ -5,6 +5,7 @@ import Header from '../src/components/header'
 import Link from 'next/link'
 import Image from 'next/image'
 import ChoreCard from '../src/components/chore-card';
+import { createAgreement } from '../src/service/create-agreement'
 
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
@@ -61,7 +62,12 @@ const FooterAction = styled.div`
 
 
 export default function Home () {
- return (
+  
+  const onSubmit = () => {
+    
+  }
+
+  return (
   <HomeContainer>
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
@@ -83,16 +89,16 @@ export default function Home () {
     </section>
     <footer>
       <FooterAction>
-       <Link href='/agreements/new'>
+        <Link href='/agreements/new'>
         <a className='plus-link'>
         <div className="plus">
           <Image src='/plus.svg' width='41' height='41'/>
         </div>
         New agreement
         </a>
-       </Link>
+        </Link>
       </FooterAction>
     </footer>
   </HomeContainer>
- )
+  )
 }

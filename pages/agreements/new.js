@@ -7,6 +7,8 @@ import Header from '../../src/components/header'
 import styled from 'styled-components'
 import Image from 'next/image'
 import FooterAction from '../../src/components/footer-action'
+import createAgreement from '../../src/service/create-agreement'
+
 
 const PageContainer = styled.main`
   padding: 1rem 3rem;
@@ -25,6 +27,17 @@ export default function NewAgreement({ agreements = [] }) {
   const [responsible, setResponsible] = useState('')
   const [importance, setImportance] = useState(25)
   const [effort, setEffort] = useState(25)
+  const onSubmit = async () => {
+    const home = await localStorage.getItem('home')
+    const payload = {
+      responsible,
+      importance,
+      effort,
+      title,
+      home
+    }
+    const response = await createAgreement(payload)
+  }
   return (
     <div >
       <Head>
@@ -47,7 +60,7 @@ export default function NewAgreement({ agreements = [] }) {
         <Image src="/thinkdiscuss.svg" width="512" height="128" alt=""></Image>
         <Slider value={effort} onChange={(value) => setEffort(value)} initialValue={25}></Slider>
       </PageContainer>
-      <FooterAction></FooterAction>
+      <FooterAction onClick={() => onSubmit()}></FooterAction>
     </div>
   )
 }

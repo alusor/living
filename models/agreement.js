@@ -2,9 +2,10 @@ import mongoose from 'mongoose'
 
 const AgreementSchema = new mongoose.Schema({
   title: String,
-  responsible: mongoose.Types.ObjectId,
+  responsible: String,
   importance: Number,
   effort: Number,
+  home: mongoose.Types.ObjectId
 },{
   timestamps: true
 })

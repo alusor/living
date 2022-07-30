@@ -31,17 +31,15 @@ const FooterAction = styled.div`
   padding-bottom: 64px;
 `
 
-const FooterActionBottom = () => {
+const FooterActionBottom = ({ onClick }) => {
   return (
     <FooterAction>
-       <Link href='/agreements/new'>
-        <a className='plus-link'>
+        <a className='plus-link' onClick={onClick} >
         <div className="plus">
           <Image src='/plus.svg' width='41' height='41'/>
         </div>
         New agreement
         </a>
-       </Link>
       </FooterAction>
   )
 }
