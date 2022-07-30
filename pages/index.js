@@ -5,6 +5,9 @@ import { Input, Button } from '@geist-ui/core'
 import createUSer from '../src/service/create-user'
 import Router from 'next/router'
 
+import Lottie from 'react-lottie';
+import * as animationData from '../models/even.json'
+
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
   height: 100vh;
@@ -50,6 +53,17 @@ export default function Home () {
     <Button onClick={() => onSubmit()} classNametype='success'>Start with username</Button>
     </section>
     <footer>
+    <Lottie options={{
+      loop: false,
+      autoplay: true, 
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
+    }}
+              height={400}
+              width={400}
+              />
     </footer>
   </HomeContainer>
  )
