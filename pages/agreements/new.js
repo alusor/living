@@ -21,6 +21,10 @@ const PageContainer = styled.main`
 `
 
 export default function NewAgreement({ agreements = [] }) {
+  const [title, setTitle] = useState('')
+  const [responsible, setResponsible] = useState('')
+  const [importance, setImportance] = useState(25)
+  const [effort, setEffort] = useState(25)
   return (
     <div >
       <Head>
@@ -32,19 +36,16 @@ export default function NewAgreement({ agreements = [] }) {
         Depparment 007
       </Header>
       <PageContainer>
-        <Text b p>Name of the agreement</Text>
-        <Input placeholder='Doing the dishes' width="100%"></Input>
-        <Text b p>{`Who's responsible?`}</Text>
-        <Input placeholder='Eduardo' width="100%"></Input>
+        <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Doing the dishes' width="100%">Name of the agreement</Input>
+        <Input value={responsible} onChange={(e) => setResponsible(e.target.value)} placeholder='Eduardo' width="100%">{`Who's responsible?`}</Input>
         <Text b p>Importance</Text>
         <Text p>How important is it to you, <b>guys</b>, that this task gets done? Have a conversation! you both decide this one <b>together.</b></Text>
         <Image src="/Discuss.svg" width="512" height="128" alt=""></Image>
-        <Slider initialValue={25}></Slider>
+        <Slider value={importance} onChange={(value) => setImportance(value)} initialValue={25}></Slider>
         <Text b p>Effort</Text>
         <Text p>{'This one is for {responsible}, now, how much effort does this chore requires for you?'}</Text>
         <Image src="/thinkdiscuss.svg" width="512" height="128" alt=""></Image>
-        <Slider initialValue={25}></Slider>
-        <Text b p>Check every...</Text>
+        <Slider value={effort} onChange={(value) => setEffort(value)} initialValue={25}></Slider>
       </PageContainer>
       <FooterAction></FooterAction>
     </div>

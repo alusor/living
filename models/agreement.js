@@ -4,7 +4,7 @@ const AgreementSchema = new mongoose.Schema({
   title: String,
   responsible: mongoose.Types.ObjectId,
   importance: Number,
-  period: String,
+  effort: Number,
 },{
   timestamps: true
 })
