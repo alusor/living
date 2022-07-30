@@ -71,10 +71,17 @@ const FooterAction = styled.div`
 
 
 export default function Homes ({invite}) {
-  const [evenRes, setEven] = useState(true)
+  const [evenRes, setEven] = useState(false)
   const evenResult = async () => {
     const result = await getEvenResult()
-    console.log(result)
+    const values = Object.entries(result.response)
+    const filterValues = values.reduce((prev, current) => {
+      console.log(current[1])
+      const red = current[1] + prev
+      return red
+    }, 0)
+    const areEven = filterValues * result.response.lenght
+    console.log(areEven)
   }
   useEffect(() => {
     evenResult()
@@ -84,7 +91,7 @@ export default function Homes ({invite}) {
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
     {
-      evenRes && <Lottie options={{
+      true && <Lottie options={{
         loop: false,
         autoplay: true, 
         animationData: even,
