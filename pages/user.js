@@ -36,6 +36,8 @@ export default function Home () {
     const payload = { username: user }
     const response = await createUSer(payload)
     console.log(response)
+    localStorage.setItem('user', response.user.username)
+    localStorage.setItem('id', response.user._id)
   }
  return (
   <HomeContainer>
