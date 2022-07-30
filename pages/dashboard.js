@@ -30,6 +30,10 @@ const HomeContainer = styled.main`
     margin 0 18px;
     align-self: center;
     justify-content: center;
+    & .graph {
+      font-size: 32px;
+      font-weight: bold;
+    }
 }
 `
 
@@ -84,7 +88,9 @@ export default function Home ({ agreements = [] }) {
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
       <div className='agreement-list'>
-        
+        <Link href='/even'>
+          <a className='graph'>View graph</a>
+        </Link>
         {renderAgreements()}
       </div>
       <p className='empty-state'>This is your agreement list: Click on the button <b>Add</b> below to add a new agreement.</p>  

@@ -53,17 +53,7 @@ export default function Home () {
     <Button onClick={() => onSubmit()} classNametype='success'>Start with username</Button>
     </section>
     <footer>
-    <Lottie options={{
-      loop: false,
-      autoplay: true, 
-      animationData: animationData,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
-    }}
-              height={400}
-              width={400}
-              />
+    
     </footer>
   </HomeContainer>
  )
