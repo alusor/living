@@ -5,6 +5,7 @@ import Header from '../src/components/header'
 import Link from 'next/link'
 import Image from 'next/image'
 import ChoreCard from '../src/components/chore-card';
+import { Input } from '@geist-ui/core'
 
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
@@ -65,33 +66,10 @@ export default function Home () {
   <HomeContainer>
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
-      <div className='agreement-list'>
-        <ChoreCard
-          name='Clo'
-          picture='/f.svg'
-          agreement='Take out the trash'
-          recurrence='1 times a week'
-        />
-        <ChoreCard
-          name='Eduardo'
-          picture='/m.svg'
-          agreement='Take out the trash'
-          recurrence='1 times a week'
-        />
-      </div>
-      <p className='empty-state'>This is your agreement list: Click on the button <b>Add</b> below to add a new agreement.</p>  
+
     </section>
     <footer>
-      <FooterAction>
-       <Link href='/agreements/new'>
-        <a className='plus-link'>
-        <div className="plus">
-          <Image src='/plus.svg' width='41' height='41'/>
-        </div>
-        New agreement
-        </a>
-       </Link>
-      </FooterAction>
+     
     </footer>
   </HomeContainer>
  )
