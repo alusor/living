@@ -5,7 +5,6 @@ import Task from '../../models/task'
 const taskHandler = nc().get(async (req, res) => {
   try {
     await dbConnect()
-
     const result = await Task.find({}).lean()
     res.json({ response: result })
   } catch (e) {

@@ -41,6 +41,7 @@ export default function Home () {
     localStorage.setItem('id', response.user._id)
     Router.push('/add-home')
   }
+  
  return (
   <HomeContainer>
     <Header>EVEN LIVING</Header>

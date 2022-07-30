@@ -5,7 +5,8 @@ const HomeSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
   },
   members: {
-    type: [mongoose.Types.ObjectId]
+    type: [mongoose.Types.ObjectId],
+    default: []
   },
   homeName: String,
   code: String,

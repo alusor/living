@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import { Text, Input, FormControl, Slider, Select, Button } from '@geist-ui/core'
 import dbConnect from '../../lib/db'
 import Agreement from '../../models/agreement'
@@ -6,7 +7,6 @@ import Header from '../../src/components/header'
 import styled from 'styled-components'
 import Image from 'next/image'
 import FooterAction from '../../src/components/footer-action'
-
 
 const PageContainer = styled.main`
   padding: 1rem 3rem;
@@ -45,11 +45,6 @@ export default function NewAgreement({ agreements = [] }) {
         <Image src="/thinkdiscuss.svg" width="512" height="128" alt=""></Image>
         <Slider initialValue={25}></Slider>
         <Text b p>Check every...</Text>
-        <Select className='recurrence' placeholder='day' width="90%">
-          <Select.Option value="Diario">Daily</Select.Option>
-          <Select.Option value="Weekly">Weekly</Select.Option>
-          <Select.Option value="Monthly">Montlhy</Select.Option>
-        </Select>
       </PageContainer>
       <FooterAction></FooterAction>
     </div>
