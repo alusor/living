@@ -4,9 +4,9 @@ import Header from '../src/components/header'
 import { Input, Button } from '@geist-ui/core'
 import createUSer from '../src/service/create-user'
 import Router from 'next/router'
-import Lottie from 'react-lottie';
-import * as animationData from '../models/even.json'
 import cookieCutter from 'cookie-cutter'
+import Cookies from 'cookies'
+
 
 
 const HomeContainer = styled.main`
@@ -61,4 +61,16 @@ export default function Home () {
     </footer>
   </HomeContainer>
  )
+}
+
+export async function getServerSideProps (context) {
+  const { invite } = context.query
+  const cookies = new Cookies(context.req, context.res)
+  cookies.set('invite', invite)
+
+  return {
+    props: {
+      invite: invite || ''
+    }
+  }
 }

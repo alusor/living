@@ -9,9 +9,6 @@ import createAgreement from '../../src/service/create-agreement'
 import { useToasts } from '@geist-ui/core'
 import Router from 'next/router'
 
-
-
-
 const PageContainer = styled.main`
   padding: 1rem 3rem;
   max-width: 1120px;

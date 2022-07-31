@@ -5,6 +5,7 @@ import Header from '../src/components/header'
 import { Input, Button, Spacer, Table } from '@geist-ui/core'
 import { getHomes, createHome, updateHome } from '../src/service/home'
 import cookieCutter from 'cookie-cutter'
+import Cookies from 'cookies'
 
 
 
@@ -134,9 +135,12 @@ export default function Homes ({invite}) {
 
 export async function getServerSideProps (context) {
   const { invite } = context.query
+  const cookies = new Cookies(context.req, context.res)
+  const inviteCookie = cookies.get('invite')
+
   return {
     props: {
-      invite: invite || ''
+      invite: invite || inviteCookie || ''
     }
   }
 }
