@@ -12,14 +12,13 @@ const taskHandler = nc().get(async (req, res) => {
         console.log('here first')
         prev[current.responsible] = current.effort / current.importance
       } else {
-        console.log('here second')
-
         prev[current.responsible] = current.effort / current.importance + prev[current.responsible]
       }
       return prev;
     }, {
       
     })
+    
     res.json({ response: meassure })
   } catch (e) {
     console.error(e)

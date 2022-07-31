@@ -69,7 +69,6 @@ const FooterAction = styled.div`
 
 
 export default function Home ({ agreements = [] }) {
-  console.log(agreements)
   const renderAgreements = () => {
     return agreements.map((agreement, index) => {
       return (
