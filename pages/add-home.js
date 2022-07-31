@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react'
-import Head from 'next/head'
 import Router from 'next/router'
-import styles from '../styles/Home.module.css'
 import styled from 'styled-components'
 import Header from '../src/components/header'
-import Link from 'next/link'
-import Image from 'next/image'
-import ChoreCard from '../src/components/chore-card';
 import { Input, Button, Spacer } from '@geist-ui/core'
 import { getHomes, createHome, updateHome } from '../src/service/home'
 
