@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Text, Input, FormControl, Slider, Select, Button } from '@geist-ui/core'
-import dbConnect from '../../lib/db'
-import Agreement from '../../models/agreement'
 import Header from '../../src/components/header'
 import styled from 'styled-components'
 import Image from 'next/image'
 import FooterAction from '../../src/components/footer-action'
 import createAgreement from '../../src/service/create-agreement'
+import { useToasts } from '@geist-ui/core'
+import Router from 'next/router'
+
+
 
 
 const PageContainer = styled.main`
@@ -27,6 +29,7 @@ export default function NewAgreement() {
   const [responsible, setResponsible] = useState('')
   const [importance, setImportance] = useState(25)
   const [effort, setEffort] = useState(25)
+  const { setToast } = useToasts()
   const onSubmit = async () => {
     const home = await localStorage.getItem('home')
     const payload = {
@@ -37,6 +40,8 @@ export default function NewAgreement() {
       home
     }
     const response = await createAgreement(payload)
+    setToast({ text: 'New agreement added.', delay: 2000 })
+    setTimeout(() => Router.back(), 2000);
   }
   return (
     <div >

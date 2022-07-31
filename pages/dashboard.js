@@ -9,6 +9,7 @@ import Router from 'next/router'
 import Agreement from '../models/agreement'
 import dbConnect from '../lib/db'
 import Cookies from 'cookies'
+import { useToasts } from '@geist-ui/core'
 
 
 const HomeContainer = styled.main`
@@ -70,6 +71,8 @@ const FooterAction = styled.div`
 
 
 export default function Home ({ agreements = [], home_id = '' }) {
+  const { setToast } = useToasts()
+
   const renderAgreements = () => {
     return agreements.map((agreement, index) => {
       return (
@@ -91,9 +94,10 @@ export default function Home ({ agreements = [], home_id = '' }) {
         <Link href='/even'>
           <a className='graph'>View graph</a>
         </Link>
-        <Link href={`https://even-living.com/?invite=${home_id}`}>
-          <a className='graph'>Invite a friend</a>
-        </Link>
+        <a onClick={() => {
+          navigator.clipboard.writeText(`https://even-living.com/?invite=${home_id}`)
+          setToast({ text: 'Copy to clipboard', delay: 2000 })
+        }} className='invite'>Invite a roommate</a>
         {renderAgreements()}
       </div>
       <p className='empty-state'>This is your agreement list: Click on the button <b>Add</b> below to add a new agreement.</p>  
