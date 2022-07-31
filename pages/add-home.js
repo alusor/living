@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import Router from 'next/router'
 import styled from 'styled-components'
 import Header from '../src/components/header'
-import { Input, Button, Spacer } from '@geist-ui/core'
+import { Input, Button, Spacer, Table } from '@geist-ui/core'
 import { getHomes, createHome, updateHome } from '../src/service/home'
+import cookieCutter from 'cookie-cutter'
+
 
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
@@ -75,7 +77,8 @@ export default function Homes ({invite}) {
       owner: id,
     }
     const response = await createHome(payload)
-    await localStorage.setItem('home',response.newHome._id)
+    await localStorage.setItem('home', response.newHome._id)
+    cookieCutter.set('home', response.newHome._id)
     Router.push('/dashboard')
 
   }
@@ -87,11 +90,24 @@ export default function Homes ({invite}) {
     }
     const response = await updateHome(payload)
     await localStorage.setItem('home',response.currentHome._id)
+    cookieCutter.set('home', response.newHome._id)
     Router.push('/dashboard')
   }
   useEffect(() =>{
     requestHomes()
   }, [])
+
+  const renderAction = (value, rowData, rowIndex) => {
+    const onSelectHome = async () => {
+      await localStorage.setItem('home', value)
+      cookieCutter.set('home', value)
+      Router.push('/dashboard')
+    }
+    return (
+      <Button type="secondary" auto scale={1/3} font="12px" onClick={onSelectHome}>View Agreements</Button>
+    )
+  }
+
   return (
   <HomeContainer>
     <Header>EVEN LIVING</Header>
@@ -103,6 +119,10 @@ export default function Homes ({invite}) {
       <Input value={invite} placeholder='Invite code' width='100%'>Invite code:</Input>
       <Spacer h={1}/>
       <Button onClick={() => onSubmitInviteHome()} type="success">Join the room</Button>
+      <Table data={homes}>
+        <Table.Column prop="homeName" label="Home"></Table.Column>
+        <Table.Column prop="_id" label="Go" render={renderAction}></Table.Column>
+      </Table>
     </section>
     <footer>
       
