@@ -51,7 +51,7 @@ export default function NewAgreement() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        Depparment 007
+        Apartment 007
       </Header>
       <PageContainer>
         <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Doing the dishes' width="100%">Name of the agreement</Input>

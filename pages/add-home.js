@@ -113,7 +113,7 @@ export default function Homes ({invite}) {
   <HomeContainer>
     <Header>EVEN LIVING</Header>
     <section className='page-content'>
-      <Input placeholder='My deparment' width='100%'>Set a name for your new home:</Input>
+      <Input placeholder='My apartment' width='100%'>Set a name for your new home:</Input>
       <Spacer h={1}/>
       <Button onClick={() => onSubmitNewHome()} type="success">Start creating agreements</Button>
       <Spacer h={2}/>
