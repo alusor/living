@@ -69,7 +69,7 @@ const FooterAction = styled.div`
 
 
 
-export default function Home ({ agreements = [] }) {
+export default function Home ({ agreements = [], home_id = '' }) {
   const renderAgreements = () => {
     return agreements.map((agreement, index) => {
       return (
@@ -90,6 +90,9 @@ export default function Home ({ agreements = [] }) {
       <div className='agreement-list'>
         <Link href='/even'>
           <a className='graph'>View graph</a>
+        </Link>
+        <Link href={`https://even-living.com/?invite=${home_id}`}>
+          <a className='graph'>Invite a friend</a>
         </Link>
         {renderAgreements()}
       </div>
@@ -122,7 +125,8 @@ export async function getServerSideProps(context) {
     console.log(result, home_id)
     return {
       props: {
-        agreements: JSON.parse(JSON.stringify(result))
+        agreements: JSON.parse(JSON.stringify(result)),
+        home_id
       }
     }
   } catch (e) {
