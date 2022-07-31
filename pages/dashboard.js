@@ -8,6 +8,7 @@ import ChoreCard from '../src/components/chore-card'
 import Router from 'next/router'
 import Agreement from '../models/agreement'
 import dbConnect from '../lib/db'
+import Cookies from 'cookies'
 
 
 const HomeContainer = styled.main`
@@ -113,10 +114,12 @@ export default function Home ({ agreements = [] }) {
 export async function getServerSideProps(context) {
   try {
     await dbConnect()
+    const cookies = new Cookies(context.req, context.res)
 
+    const home_id = cookies.get('home')
     /* find all the data in our database */
-    const result = await Agreement.find({}).lean()
-
+    const result = await Agreement.find({ home: home_id }).lean()
+    console.log(result, home_id)
     return {
       props: {
         agreements: JSON.parse(JSON.stringify(result))

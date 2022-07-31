@@ -7,6 +7,7 @@ import { getHomes, createHome, updateHome } from '../src/service/home'
 import cookieCutter from 'cookie-cutter'
 
 
+
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
   height: 100vh;
