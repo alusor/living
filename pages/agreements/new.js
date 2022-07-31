@@ -22,7 +22,7 @@ const PageContainer = styled.main`
   }
 `
 
-export default function NewAgreement({ agreements = [] }) {
+export default function NewAgreement() {
   const [title, setTitle] = useState('')
   const [responsible, setResponsible] = useState('')
   const [importance, setImportance] = useState(25)
@@ -63,26 +63,4 @@ export default function NewAgreement({ agreements = [] }) {
       <FooterAction onClick={() => onSubmit()}></FooterAction>
     </div>
   )
-}
-
-export async function getServerSideProps(context) {
-  try {
-    await dbConnect()
-
-    /* find all the data in our database */
-    const result = await Agreement.find({}).lean()
-
-    return {
-      props: {
-        agreements: JSON.parse(JSON.stringify(result))
-      }
-    }
-  } catch (e) {
-    console.error(e)
-    return {
-      props: {
-        isConnected: false
-      }
-    }
-  }
 }
