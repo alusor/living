@@ -4,9 +4,10 @@ import Header from '../src/components/header'
 import { Input, Button } from '@geist-ui/core'
 import createUSer from '../src/service/create-user'
 import Router from 'next/router'
-
 import Lottie from 'react-lottie';
 import * as animationData from '../models/even.json'
+import cookieCutter from 'cookie-cutter'
+
 
 const HomeContainer = styled.main`
   padding: 0rem 0rem;
@@ -42,6 +43,9 @@ export default function Home () {
     console.log(response)
     localStorage.setItem('user', response.user.username)
     localStorage.setItem('id', response.user._id)
+    cookieCutter.set('user', response.user.username)
+    cookieCutter.set('id', response.user._id)
+
     Router.push('/add-home')
   }
   

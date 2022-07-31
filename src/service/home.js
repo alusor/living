@@ -11,7 +11,7 @@ export async function createHome (payload) {
 
 export async function getHomes (payload) {
   console.log(payload)
-  const response = await fetch(`/api/home?member=${payload._id}`, {
+  const response = await fetch(`/api/home?member=${payload.id}`, {
     method: 'GET',
   })
   const result =  await response.json()

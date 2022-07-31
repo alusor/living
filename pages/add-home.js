@@ -120,7 +120,7 @@ export async function getServerSideProps (context) {
   const { invite } = context.query
   return {
     props: {
-      invite
+      invite: invite || ''
     }
   }
 }

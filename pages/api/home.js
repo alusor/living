@@ -5,8 +5,8 @@ import Home from '../../models/home'
 const taskHandler = nc().get(async (req, res) => {
   try {
     await dbConnect()
-
-    const result = await Home.find({}).lean()
+    const { query } = req
+    const result = await Home.find({ owner: query.member }).lean()
     res.json({ response: result })
   } catch (e) {
     console.error(e)
