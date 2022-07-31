@@ -92,7 +92,7 @@ export default function Homes ({invite}) {
     }
     const response = await updateHome(payload)
     await localStorage.setItem('home',response.currentHome._id)
-    cookieCutter.set('home', response.newHome._id)
+    cookieCutter.set('home', response.currentHome._id)
     Router.push('/dashboard')
   }
   useEffect(() =>{
